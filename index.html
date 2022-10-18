@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Aplikasi Rak Buku</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Tinos:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="./assets/styles.css">
+</head>
+
+<body>
+    <header class="head_bar">
+        <h1 class="head_bar__title" id="title-bar">Rak Buku</h1>
+    </header>
+    <main>
+        <section class="input_section">
+            <h2 id="title_form">Masukkan Buku Baru</h2>
+            <form id="inputBuku">
+                <div class="input">
+                    <label for="inputBukuJudul">Judul Buku</label>
+                    <br>
+                    <input id="inputBukuJudul" type="text" required placeholder="Judul Buku">
+                </div>
+                <div class="input">
+                    <label for="inputBukuPenulis">Penulis</label>
+                    <br>
+                    <input id="inputBukuPenulis" type="text" required placeholder="Penulis Buku ">
+                </div>
+                <div class="input">
+                    <label for="inputBukuTahun">Bulan Tahun</label>
+                    <input id="inputBukuTahun" type="month" required placeholder="Bulan Tahun Terbit Buku">
+                </div>
+                <div class="input_inline">
+                    <label for="inputBukuIsSelesai">Selesai dibaca</label>
+                    <input id="inputBukuIsSelesai" type="checkbox">
+                </div>
+                <button id="bukuubmit" type="submit">Masukkan Buku ke Rak <span>Belum Selesai dibaca</span></button>
+            </form>
+        </section>
+
+        <section class="cari_section">
+            <form id="cariBuku">
+                <input id="cariBukuJudul" type="text" placeholder="Masukan Judul Buku.....">
+                <button id="cariSubmit" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+        </section>
+
+        <section class="buku_rak">
+            <h2>Belum selesai dibaca</h2>
+            <div id="belumBukuList" class="buku_list">
+            </div>
+        </section>
+
+        <section class="buku_rak">
+            <h2>Selesai dibaca</h2>
+            <div id="selesaiBukufList" class="buku_list">
+            </div>
+        </section>
+    </main>
+
+    <script src="./assets/javascript.js"></script>
+
+</body>
+
+</html>

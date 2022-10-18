@@ -1,0 +1,189 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body,
+input,
+button {
+    font-size: 16px;
+}
+
+.head_bar {
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(206, 60, 58);
+    color: white;
+}
+
+main {
+    max-width: 800px;
+    width: 80%;
+    margin: 0 auto;
+    padding: 16px;
+}
+
+.input_section {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.input_section>h2 {
+    text-align: center;
+}
+
+.input_section>form>.input {
+    margin: 8px 0;
+}
+
+.input_section>form>button {
+    background-color: rgb(206, 60, 58);
+    color: white;
+    border: 0;
+    border-radius: 5px;
+    display: block;
+    width: 100%;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.input_section>form>button>span {
+    font-weight: bold;
+}
+
+.input_section>form>.input>input {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.input_section>form>.input>label {
+    font-weight: bold;
+}
+
+.input_section>form>.input_inline {
+    margin: 12px 0;
+    display: flex;
+    align-items: center;
+}
+
+.input_section>form>.input_inline>label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.cari_section {
+    margin: 16px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.cari_section>form {
+    padding: 16px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 0.5fr;
+    column-gap: 10px;
+}
+
+.cari_section>form>label {
+    display: flex;
+    align-items: center;
+}
+
+.cari_section>form>input {
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.cari_section>form>button {
+    background-color: rgb(206, 60, 58);
+    color: white;
+    border: 0;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.cari_section>form>button:hover,
+.input_section>form>button:hover {
+    background-color: rgb(68, 115, 202);
+}
+
+.buku_rak {
+    margin: 16px 0 0 0;
+    border: 1px solid black;
+    padding: 16px;
+    border-radius: 10px;
+}
+
+.buku_rak>.buku_list {
+    padding: 16px;
+}
+
+.buku_rak>.buku_list>.buku_item>h3,p {
+    margin: 8px 0;
+}
+
+.buku_rak>.buku_list>.buku_item>.action>button {
+    border: 0;
+    padding: 5px;
+    margin: 0 5px 0 0;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.buku_rak>.buku_list>.buku_item>.action>.green {
+    padding: 7px 24px;
+    background-color: rgb(21, 165, 21);
+    color: white;
+    transition: .3s;
+}
+
+.buku_rak>.buku_list>.buku_item>.action>.green:hover {
+    background-color: rgb(28, 219, 28);
+    color: rgb(143, 141, 141);
+}
+
+.buku_rak>.buku_list>.buku_item>.action>.blue {
+    padding: 7px 24px;
+    background-color: rgb(21, 79, 165);
+    color: white;
+    transition: .3s;
+}
+
+.buku_rak>.buku_list>.buku_item>.action>.blue:hover {
+    background-color: rgb(28, 47, 219);
+    color: rgb(143, 141, 141);
+}
+
+
+.buku_rak>.buku_list>.buku_item>.action>.red {
+    padding: 7px 24px;
+    background-color: rgb(185, 45, 45);
+    color: white;
+    transition: .3s;
+}
+
+.buku_rak>.buku_list>.buku_item>.action>.red:hover {
+    background-color: rgb(235, 80, 80);
+    color: rgb(143, 141, 141);
+}
+
+.sukses {
+    color: rgb(21, 165, 21) !important;
+}
+
+i {
+    font-size: 1rem;
+}
