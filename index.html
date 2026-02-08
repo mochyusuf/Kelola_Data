@@ -19,45 +19,49 @@
     <main>
         <section class="input_section">
             <h2 id="title_form">Masukkan Buku Baru</h2>
-            <form id="inputBuku">
+            <form id="inputBuku" data-testid="bookForm">
                 <div class="input">
                     <label for="inputBukuJudul">Judul Buku</label>
                     <br>
-                    <input id="inputBukuJudul" type="text" required placeholder="Judul Buku">
+                    <input id="inputBukuJudul" type="text" required placeholder="Judul Buku" data-testid="bookFormTitleInput" />
                 </div>
                 <div class="input">
                     <label for="inputBukuPenulis">Penulis</label>
                     <br>
-                    <input id="inputBukuPenulis" type="text" required placeholder="Penulis Buku ">
+                    <input id="inputBukuPenulis" type="text" required placeholder="Penulis Buku" data-testid="bookFormAuthorInput" />
                 </div>
                 <div class="input">
-                    <label for="inputBukuTahun">Bulan Tahun</label>
-                    <input id="inputBukuTahun" type="month" required placeholder="Bulan Tahun Terbit Buku">
+                    <label for="inputBukuTahun">Tahun</label>
+                    <input id="inputBukuTahun" type="year" required placeholder="Tahun Terbit Buku" data-testid="bookFormYearInput" />
                 </div>
                 <div class="input_inline">
                     <label for="inputBukuIsSelesai">Selesai dibaca</label>
-                    <input id="inputBukuIsSelesai" type="checkbox">
+                    <input id="inputBukuIsSelesai" type="checkbox" data-testid="bookFormIsCompleteCheckbox"
                 </div>
-                <button id="bukuubmit" type="submit">Masukkan Buku ke Rak <span>Belum Selesai dibaca</span></button>
+                <button id="bukuubmit" type="submit" data-testid="bookFormSubmitButton">
+                    Masukkan Buku ke Rak <span>Belum Selesai dibaca</span>
+                </button>
             </form>
         </section>
 
         <section class="cari_section">
-            <form id="cariBuku">
-                <input id="cariBukuJudul" type="text" placeholder="Masukan Judul Buku.....">
-                <button id="cariSubmit" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <form id="cariBuku" data-testid="searchBookForm">
+                <input id="cariBukuJudul" type="text" placeholder="Masukan Judul Buku....." data-testid="searchBookFormTitleInput"/>
+                <button id="cariSubmit" type="submit" data-testid="searchBookFormSubmitButton">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
             </form>
         </section>
 
         <section class="buku_rak">
             <h2>Belum selesai dibaca</h2>
-            <div id="belumBukuList" class="buku_list">
+            <div id="belumBukuList" class="buku_list" data-testid="incompleteBookList">
             </div>
         </section>
 
         <section class="buku_rak">
             <h2>Selesai dibaca</h2>
-            <div id="selesaiBukufList" class="buku_list">
+            <div id="selesaiBukufList" class="buku_list" data-testid="completeBookList">
             </div>
         </section>
     </main>

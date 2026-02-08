@@ -29,13 +29,13 @@ function generate_id() {
     return +new Date();
 }
 
-function generate_buku(id, judul, penulis, tahun, isSelesai) {
+function generate_buku(id, title, author, year, isComplete) {
     return {
         id,
-        judul,
-        penulis,
-        tahun,
-        isSelesai
+        title,
+        author,
+        year,
+        isComplete
     }
 }
 
@@ -58,7 +58,7 @@ document.addEventListener(RENDER_BUKU, function() {
     if (key_buku == '') {
         for (const buku of to_buku) {
             const card_buku = make_card_buku(buku);
-            if (buku.isSelesai) {
+            if (buku.isComplete) {
                 selesai_buku.append(card_buku);
             } else {
                 belum_buku.append(card_buku);
@@ -67,7 +67,7 @@ document.addEventListener(RENDER_BUKU, function() {
     } else {
         for (const buku of found_buku) {
             const card_buku = make_card_buku(buku);
-            if (buku.isSelesai) {
+            if (buku.isComplete) {
                 selesai_buku.append(card_buku);
             } else {
                 belum_buku.append(card_buku);
@@ -82,7 +82,7 @@ function handler_selesai_buku(buku_id) {
 
     if (buku_target === null) return;
     console.log(buku_target);
-    buku_target.isSelesai = false;
+    buku_target.isComplete = false;
     document.dispatchEvent(new Event(RENDER_BUKU));
     save_data();
 }
@@ -92,7 +92,7 @@ function handler_belum_buku(buku_id) {
 
     if (buku_target === null) return;
 
-    buku_target.isSelesai = true;
+    buku_target.isComplete = true;
     document.dispatchEvent(new Event(RENDER_BUKU));
     save_data();
 }
@@ -117,21 +117,26 @@ function find_to_index(buku_id) {
     return -1;
 }
 
-function make_card_buku({ id, judul, penulis, tahun, isSelesai }) {
+function make_card_buku({ id, title, author, year, isComplete }) {
     const judul_element = document.createElement('h3');
-    judul_element.innerText = `${judul}`;
+    judul_element.innerText = `${title}`;
+    judul_element.setAttribute('data-testid', 'bookItemTitle');
 
     const penulis_element = document.createElement('p');
-    penulis_element.innerText = `Penulis : ${penulis}`;
+    penulis_element.innerText = `Penulis : ${author}`;
+    penulis_element.setAttribute('data-testid', 'bookItemAuthor');
 
     const tahun_element = document.createElement('p');
-    tahun_element.innerText = `Tahun-Bulan : ${tahun}`;
+    tahun_element.innerText = `Tahun : ${year}`;
+    tahun_element.setAttribute('data-testid', 'bookItemYear');
 
     const btn_aksi = document.createElement('button');
+    btn_aksi.setAttribute('data-testid', 'bookItemIsCompleteButton');
 
     const btn_hapus = document.createElement('button');
     btn_hapus.classList.add('red');
     btn_hapus.innerHTML = `<i class="fa-solid fa-trash"></i>`;
+    btn_hapus.setAttribute('data-testid', 'bookItemDeleteButton');
 
     btn_hapus.addEventListener('click', function() {
         const confirm_remove = confirm("Apakah anda akan menghapus buku ini?");
@@ -145,9 +150,11 @@ function make_card_buku({ id, judul, penulis, tahun, isSelesai }) {
     const artikel_element = document.createElement('artikel');
     artikel_element.classList.add('buku_item');
     artikel_element.setAttribute('id', `${id}`);
+    artikel_element.setAttribute('data-testid', 'bookItem');
+    artikel_element.setAttribute('data-bookid', `${id}`);
     artikel_element.append(judul_element, penulis_element, tahun_element, div_element);
 
-    if (isSelesai) {
+    if (isComplete) {
         btn_aksi.classList.add('blue');
         btn_aksi.innerHTML = `<i class="fa-solid fa-book"></i>`;
         btn_aksi.addEventListener('click', function() {
@@ -166,10 +173,10 @@ function make_card_buku({ id, judul, penulis, tahun, isSelesai }) {
 function input_form_data() {
     const form_data = {};
 
-    form_data['judul'] = document.getElementById('inputBukuJudul').value;
-    form_data['penulis'] = document.getElementById('inputBukuPenulis').value;
-    form_data['tahun'] = document.getElementById('inputBukuTahun').value;
-    form_data['isSelesai'] = document.getElementById('inputBukuIsSelesai').checked;
+    form_data['title'] = document.getElementById('inputBukuJudul').value;
+    form_data['author'] = document.getElementById('inputBukuPenulis').value;
+    form_data['year'] = parseInt(document.getElementById('inputBukuTahun').value);
+    form_data['isComplete'] = document.getElementById('inputBukuIsSelesai').checked;
 
     return form_data;
 }
@@ -184,9 +191,9 @@ function reset_form_data() {
 
 function add_buku() {
     reset_form_cari()
-    const { judul, penulis, tahun, isSelesai } = input_form_data();
+    const { title, author, year, isComplete } = input_form_data();
     const id = generate_id();
-    const bukus = generate_buku(id, judul, penulis, tahun, isSelesai);
+    const bukus = generate_buku(id, title, author, year, isComplete);
     reset_form_data();
 
     if (to_buku.push(bukus)) {
@@ -213,10 +220,10 @@ function cari__buku() {
     save_data();
 }
 
-function find_judul_buku(judul) {
+function find_judul_buku(title) {
 
     for (const index in to_buku) {
-        if (to_buku[index].judul == judul) {
+        if (to_buku[index].title == title) {
             return to_buku[index];
         }
     }
